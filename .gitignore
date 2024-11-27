@@ -7,6 +7,8 @@
 *.dll
 *.so
 *.dylib
+app
+rmEventTrigger
 
 # Test binary, built with `go test -c`
 *.test
@@ -23,3 +25,7 @@ go.work.sum
 
 # env file
 .env
+
+# trash files
+conf.json
+debug.log
