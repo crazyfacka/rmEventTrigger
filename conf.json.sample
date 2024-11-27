@@ -1,0 +1,6 @@
+{"conf": [
+    {
+        "Event": "Sync",
+        "Actions": ["/bin/ls -la"]
+    }
+]}
