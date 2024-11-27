@@ -176,7 +176,7 @@ func main() {
 
 	syncRe, _ := regexp.Compile(`.*rm.synchronizer.*execute ended.*`)
 
-	evs := make(chan Event, 5)
+	evs := make(chan Event, 10)
 	go executeEvent(evs)
 
 	scanner := bufio.NewScanner(stdout)
