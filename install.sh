@@ -1,7 +1,7 @@
 #!/bin/sh
 
-BINARY_URL="https://github.com/crazyfacka/rmEventTrigger/releases/download/v0.1/app"
-SERVICE_FILE_URL="https://raw.githubusercontent.com/crazyfacka/rmEventTrigger/refs/tags/v0.1/rm-event-trigger.service"
+BINARY_URL="https://github.com/crazyfacka/rmEventTrigger/releases/download/v0.2/app"
+SERVICE_FILE_URL="https://raw.githubusercontent.com/crazyfacka/rmEventTrigger/refs/tags/v0.2/rm-event-trigger.service"
 BINARY_NAME="app"
 SERVICE_NAME="rm-event-trigger"
 
