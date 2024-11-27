@@ -1,5 +1,5 @@
 # Variables
-TRG_PKG := rmEventTrigger
+TRG_PKG := app
 BUILD_TIME := $(shell date +"%Y%m%d.%H%M%S")
 GoVersion := N/A
 CommitHash := N/A

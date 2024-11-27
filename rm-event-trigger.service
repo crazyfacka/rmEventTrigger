@@ -1,0 +1,11 @@
+[Unit]
+Description=reMarkable Event Trigger
+After=home.mount
+
+[Service]
+Environment=HOME=/home/root
+WorkingDirectory=/home/root/rmeventtrigger
+ExecStart=/home/root/rmeventtrigger/app
+
+[Install]
+WantedBy=multi-user.target
