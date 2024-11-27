@@ -29,3 +29,6 @@ go.work.sum
 # trash files
 conf.json
 debug.log
+
+# ide files
+.vscode
