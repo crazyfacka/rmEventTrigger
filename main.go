@@ -50,6 +50,7 @@ type Config struct {
 func executeEvent(ch <-chan Event) {
 	for ev := range ch {
 		if v, ok := mapConfig[ev]; ok {
+			log.Info().Str("event", v.Event).Msg("Received event")
 			lastTriggerDiff := time.Since(v.LastTrigger)
 			if lastTriggerDiff.Seconds() < 30 {
 				log.Info().Str("event", v.Event).Str("lastTrigger", lastTriggerDiff.String()).Msg("Last event happend shortly before")
