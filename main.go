@@ -37,9 +37,10 @@ var eventType = map[string]Event{
 var mapConfig map[Event]EventConfig
 
 type EventConfig struct {
-	Event       string   `json:"Event"`
-	Actions     []string `json:"Actions"`
-	LastTrigger time.Time
+	Event        string   `json:"Event"`
+	Actions      []string `json:"Actions"`
+	ActionsSplit [][]string
+	LastTrigger  time.Time
 }
 
 type Config struct {
@@ -55,12 +56,11 @@ func executeEvent(ch <-chan Event) {
 				continue
 			}
 
-			for _, item := range v.Actions {
+			for idx, item := range v.Actions {
 				log.Info().Str("cmd", item).Msg("Executing command")
 				cmdStart := time.Now()
 
-				splitCmd := strings.Fields(item) // TODO Optimize this
-				cmd := exec.Command(splitCmd[0], splitCmd[1:]...)
+				cmd := exec.Command(v.ActionsSplit[idx][0], v.ActionsSplit[idx][1:]...)
 
 				stdout, err := cmd.StdoutPipe()
 				if err != nil {
@@ -116,10 +116,16 @@ func loadConfiguration(confFile string) (map[Event]EventConfig, error) {
 		}
 
 		if _, ok := mapConfig[eventType[val.Event]]; !ok {
+			for _, action := range val.Actions {
+				val.ActionsSplit = append(val.ActionsSplit, strings.Fields(action))
+			}
 			mapConfig[eventType[val.Event]] = val
 		} else {
 			tmpEvent := mapConfig[eventType[val.Event]]
 			tmpEvent.Actions = append(mapConfig[eventType[val.Event]].Actions, val.Actions...)
+			for _, action := range val.Actions {
+				tmpEvent.ActionsSplit = append(val.ActionsSplit, strings.Fields(action))
+			}
 			mapConfig[eventType[val.Event]] = tmpEvent
 		}
 	}
