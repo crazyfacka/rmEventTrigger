@@ -49,4 +49,4 @@ $ ./app -c conf.json
 
 ## Notes
 
-Currently the `Makefile`, and the binary on the Releases page, it's for the reMarkable Paper Pro, which runs on ARM64 architecture. It should be easy to adapt to the reMarkable 2 (and perhaps the 1).
+Currently the `Makefile`, and the binary on the Releases page, are for the reMarkable Paper Pro, which runs on ARM64 architecture. It should be easy to adapt to the reMarkable 2 (and perhaps the 1).
